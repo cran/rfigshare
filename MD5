@@ -1,6 +1,6 @@
-0f8edf55eca27ece2600e98474371c53 *DESCRIPTION
+c1357318b72c161932b12b968722de66 *DESCRIPTION
 fcf98a159858184d7e00f59b7b708d10 *NAMESPACE
-6de4f6322251f6c78d07dc93e294854f *NEWS
+2f66303165c46a364a74f15ec8647eef *NEWS
 f9cb72fa8ed1139e5fc7f4642497ab56 *R/fs_add_authors.R
 7fef1a71fa33d2bb0dafdfd80b683c0b *R/fs_add_categories.R
 859dfef1adb871a9a005c70e7dfaf8c0 *R/fs_add_links.R
@@ -28,11 +28,11 @@ a3f99172d0fe26124fe3c62d32338a16 *R/fs_update.R
 7490a90c27edbfcb94ef16bc949de398 *R/plot_to_filename.R
 b6e7bbbbdb938ec5751c5d5f6c481299 *R/summary_fs_details.R
 2fe32aedadb65b4783dbcbe0905e5294 *R/zzz.R
-65148946a2e7e0b57154cd59819adee1 *README.md
+10587d63f96d034eb399bc9f1f3e6b0c *README.md
 233949b55d768d40f4e258367c5290fb *build/vignette.rds
 792a7f8b639f5c37e62a54ebf48175d3 *inst/doc/README.R
-9f4b3fbe4aacdb6043cbd3f3807c583a *inst/doc/README.Rmd
-1d52e6c4b23a153afa7f60f5a0991c59 *inst/doc/README.html
+45a8a3de7f72f3158a7d2d0dc00241c5 *inst/doc/README.Rmd
+46bc01ea26fae5e4f6762f0dfe0daafd *inst/doc/README.html
 6c93178203b4ab991fc97613ee5ea407 *inst/doc/vignettes/Makefile
 9f4b3fbe4aacdb6043cbd3f3807c583a *inst/doc/vignettes/README.Rmd
 26d6409f57d8b041fe39db732013aaff *inst/examples/figure/applications.png
@@ -81,4 +81,4 @@ d5b72ba508a3dfc2274a660e94192c8a *man/plot_to_filename.Rd
 e886e63695f2961e4b80ab4606e65852 *man/summary_fs_details.Rd
 2ad6f01cfdfce01046e2355ef30702ab *tests/test-all.R
 9ff6af000f7af037d46583b912a140f2 *tests/testthat/test_figshare.R
-9f4b3fbe4aacdb6043cbd3f3807c583a *vignettes/README.Rmd
+45a8a3de7f72f3158a7d2d0dc00241c5 *vignettes/README.Rmd

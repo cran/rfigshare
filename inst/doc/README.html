@@ -238,7 +238,7 @@ install_github(&quot;rfigshare&quot;, &quot;ropensci&quot;)
 <pre><code class="r">id &lt;- fs_create(&quot;Test title&quot;, &quot;description of test&quot;)
 </code></pre>
 
-<pre><code>## Your article has been created! Your id number is 1109953
+<pre><code>## Your article has been created! Your id number is 1126356
 </code></pre>
 
 <p>This creates an article with the essential metadata information. We can now upload the dataset to this newly created figshare object using <code>fs_upload</code>.  For the purposes of this example, we&#39;ll just upload one of R&#39;s built-in datasets:</p>
@@ -422,7 +422,7 @@ fs_upload(id, &quot;mtcars.csv&quot;)
 <pre><code class="r">fs_make_private(id)
 </code></pre>
 
-<pre><code>## Response [http://api.figshare.com/v1/my_data/articles/1109953/action/make_private]
+<pre><code>## Response [http://api.figshare.com/v1/my_data/articles/1126356/action/make_private]
 ##   Status: 200
 ##   Content-type: application/json; charset=UTF-8
 ##   Size: 48 B
@@ -448,7 +448,7 @@ id &lt;- fs_new_article(title=&quot;A Test of rfigshare&quot;,
                      visibility=&quot;private&quot;)
 </code></pre>
 
-<pre><code>## Your article has been created! Your id number is 1109954
+<pre><code>## Your article has been created! Your id number is 1126357
 </code></pre>
 
 <pre><code class="r">unlink(&quot;mtcars.csv&quot;) # clean up
@@ -461,13 +461,13 @@ id &lt;- fs_new_article(title=&quot;A Test of rfigshare&quot;,
 <pre><code class="r">fs_details(id)
 </code></pre>
 
-<pre><code>## article_id: 1.11e+06
+<pre><code>## article_id: 1.1264e+06
 ## title: A Test of rfigshare
 ## master_publisher_id: 0.0e+00
 ## defined_type: dataset
 ## status: Private
 ## version: 1.0
-## published_date: 11:52, Jul 17, 2014
+## published_date: 06:25, Aug 03, 2014
 ## description: This is a test
 ## description_nohtml: This is a test
 ## total_size: 1.70 KB
@@ -497,7 +497,7 @@ id &lt;- fs_new_article(title=&quot;A Test of rfigshare&quot;,
 ## files:
 ## - size: 2 KB
 ##   thumb: ~
-##   id: 1.6002e+06
+##   id: 1.6204e+06
 ##   mime_type: text/plain
 ##   name: mtcars.csv
 ## links:
@@ -512,13 +512,13 @@ mine[1:2]
 </code></pre>
 
 <pre><code>## [[1]]
-## article_id: 1.11e+06
+## article_id: 1.1264e+06
 ## title: A Test of rfigshare
 ## master_publisher_id: 0.0e+00
 ## defined_type: dataset
 ## status: Private
 ## version: 1.0
-## published_date: 11:52, Jul 17, 2014
+## published_date: 06:25, Aug 03, 2014
 ## description: This is a test
 ## description_nohtml: This is a test
 ## total_size: 1.70 KB
@@ -548,7 +548,7 @@ mine[1:2]
 ## files:
 ## - size: 2 KB
 ##   thumb: ~
-##   id: 1.6002e+06
+##   id: 1.6204e+06
 ##   mime_type: text/plain
 ##   name: mtcars.csv
 ## links:
@@ -556,13 +556,13 @@ mine[1:2]
 ##   id: 673.0
 ## 
 ## [[2]]
-## article_id: 1.11e+06
+## article_id: 1.1264e+06
 ## title: Test title
 ## master_publisher_id: 0.0e+00
 ## defined_type: dataset
 ## status: Private
 ## version: 1.0
-## published_date: 11:52, Jul 17, 2014
+## published_date: 06:25, Aug 03, 2014
 ## description: description of test
 ## description_nohtml: description of test
 ## total_size: 1.70 KB
@@ -584,7 +584,7 @@ mine[1:2]
 ## files:
 ## - size: 2 KB
 ##   thumb: ~
-##   id: 1.6002e+06
+##   id: 1.6204e+06
 ##   mime_type: text/plain
 ##   name: mtcars.csv
 ## links: []
@@ -595,11 +595,8 @@ mine[1:2]
 <pre><code class="r">fs_ids(mine)
 </code></pre>
 
-<pre><code>##  [1] 1109954 1109953 1109951 1109949 1109948 1109945 1109944 1109941
-##  [9] 1109940 1109938
-</code></pre>
-
-<pre><code> [1] 105136 105135  97653  97500  97279  97218  96919  96916  95839    138
+<pre><code>##  [1] 1126357 1126356 1126354 1126353 1126350 1126349 1126346 1126344
+##  [9] 1126343 1126340
 </code></pre>
 
 <p>We can delete unwanted files that are not public with <code>fs_delete</code>:  </p>
@@ -617,7 +614,7 @@ mine[1:2]
 ## 
 ##   Carl Boettiger, Scott Chamberlain, Karthik Ram and Edmund Hart
 ##   (2012). rfigshare: an R interface to figshare.com.. R package
-##   version 0.3.5. https://github.com/ropensci/rfigshare
+##   version 0.3.6. https://github.com/ropensci/rfigshare
 ## 
 ## A BibTeX entry for LaTeX users is
 ## 
@@ -625,12 +622,12 @@ mine[1:2]
 ##     title = {rfigshare: an R interface to figshare.com.},
 ##     author = {Carl Boettiger and Scott Chamberlain and Karthik Ram and Edmund Hart},
 ##     year = {2012},
-##     note = {R package version 0.3.5},
+##     note = {R package version 0.3.6},
 ##     url = {https://github.com/ropensci/rfigshare},
 ##   }
 </code></pre>
 
-<p><a href="http://ropensci.org"><img src="http://ropensci.org/public_images/github_footer.png" alt=""/></a></p>
+<p><a href="http://ropensci.org"><img src="http://ropensci.org/public_images/github_footer.png" alt="ropensci.org logo"/></a>\</p>
 
 </body>
 
