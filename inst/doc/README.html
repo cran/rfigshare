@@ -60,6 +60,7 @@ body, td {
 body {
   max-width: 800px;
   margin: auto;
+  padding: 1em;
   line-height: 20px;
 }
 
@@ -67,28 +68,28 @@ tt, code, pre {
    font-family: 'DejaVu Sans Mono', 'Droid Sans Mono', 'Lucida Console', Consolas, Monaco, monospace;
 }
 
-h1 { 
-   font-size:2.2em; 
+h1 {
+   font-size:2.2em;
 }
 
-h2 { 
-   font-size:1.8em; 
+h2 {
+   font-size:1.8em;
 }
 
-h3 { 
-   font-size:1.4em; 
+h3 {
+   font-size:1.4em;
 }
 
-h4 { 
-   font-size:1.0em; 
+h4 {
+   font-size:1.0em;
 }
 
-h5 { 
-   font-size:0.9em; 
+h5 {
+   font-size:0.9em;
 }
 
-h6 { 
-   font-size:0.8em; 
+h6 {
+   font-size:0.8em;
 }
 
 a:visited {
@@ -132,54 +133,54 @@ hr {
 }
 
 @media print {
-   * { 
-      background: transparent !important; 
-      color: black !important; 
-      filter:none !important; 
-      -ms-filter: none !important; 
+   * {
+      background: transparent !important;
+      color: black !important;
+      filter:none !important;
+      -ms-filter: none !important;
    }
 
-   body { 
-      font-size:12pt; 
-      max-width:100%; 
-   }
-       
-   a, a:visited { 
-      text-decoration: underline; 
+   body {
+      font-size:12pt;
+      max-width:100%;
    }
 
-   hr { 
+   a, a:visited {
+      text-decoration: underline;
+   }
+
+   hr {
       visibility: hidden;
       page-break-before: always;
    }
 
-   pre, blockquote { 
-      padding-right: 1em; 
-      page-break-inside: avoid; 
+   pre, blockquote {
+      padding-right: 1em;
+      page-break-inside: avoid;
    }
 
-   tr, img { 
-      page-break-inside: avoid; 
+   tr, img {
+      page-break-inside: avoid;
    }
 
-   img { 
-      max-width: 100% !important; 
+   img {
+      max-width: 100% !important;
    }
 
-   @page :left { 
-      margin: 15mm 20mm 15mm 10mm; 
-   }
-     
-   @page :right { 
-      margin: 15mm 10mm 15mm 20mm; 
+   @page :left {
+      margin: 15mm 20mm 15mm 10mm;
    }
 
-   p, h2, h3 { 
-      orphans: 3; widows: 3; 
+   @page :right {
+      margin: 15mm 10mm 15mm 20mm;
    }
 
-   h2, h3 { 
-      page-break-after: avoid; 
+   p, h2, h3 {
+      orphans: 3; widows: 3;
+   }
+
+   h2, h3 {
+      page-break-after: avoid;
    }
 }
 </style>
@@ -237,7 +238,7 @@ install_github(&quot;rfigshare&quot;, &quot;ropensci&quot;)
 <pre><code class="r">id &lt;- fs_create(&quot;Test title&quot;, &quot;description of test&quot;)
 </code></pre>
 
-<pre><code>## Your article has been created! Your id number is 1008993
+<pre><code>## Your article has been created! Your id number is 1109953
 </code></pre>
 
 <p>This creates an article with the essential metadata information. We can now upload the dataset to this newly created figshare object using <code>fs_upload</code>.  For the purposes of this example, we&#39;ll just upload one of R&#39;s built-in datasets:</p>
@@ -421,9 +422,10 @@ fs_upload(id, &quot;mtcars.csv&quot;)
 <pre><code class="r">fs_make_private(id)
 </code></pre>
 
-<pre><code>## Response [http://api.figshare.com/v1/my_data/articles/1008993/action/make_private]
+<pre><code>## Response [http://api.figshare.com/v1/my_data/articles/1109953/action/make_private]
 ##   Status: 200
 ##   Content-type: application/json; charset=UTF-8
+##   Size: 48 B
 ## {&quot;success&quot;: &quot;Article status changed to Private&quot;}
 </code></pre>
 
@@ -434,17 +436,22 @@ fs_upload(id, &quot;mtcars.csv&quot;)
 <p>The <code>rfigshare</code> package will let you create a new figshare article with additional authors, tags, categories, etc in a single command usnig the <code>fs_new_article</code> function.  The essential metadata <code>title</code>, <code>description</code> and <code>type</code> are required, but any other information we omit at this stage can be added later.  If we set <code>visibility</code> to private or public, the article is published on figshare immediately.  </p>
 
 <pre><code class="r">data(mtcars)
-write.csv(mtcars, &quot;mtcars.csv&quot;)
-id &lt;- fs_new_article(title = &quot;A Test of rfigshare&quot;, description = &quot;This is a test&quot;, 
-    type = &quot;dataset&quot;, authors = c(&quot;Karthik Ram&quot;, &quot;Scott Chamberlain&quot;), tags = c(&quot;ecology&quot;, 
-        &quot;openscience&quot;), categories = &quot;Ecology&quot;, links = &quot;http://ropensci.org&quot;, 
-    files = &quot;mtcars.csv&quot;, visibility = &quot;private&quot;)
+write.csv(mtcars,&quot;mtcars.csv&quot;)
+id &lt;- fs_new_article(title=&quot;A Test of rfigshare&quot;, 
+                     description=&quot;This is a test&quot;, 
+                     type=&quot;dataset&quot;, 
+                     authors=c(&quot;Karthik Ram&quot;, &quot;Scott Chamberlain&quot;), 
+                     tags=c(&quot;ecology&quot;, &quot;openscience&quot;), 
+                     categories=&quot;Ecology&quot;, 
+                     links=&quot;http://ropensci.org&quot;, 
+                     files=&quot;mtcars.csv&quot;,
+                     visibility=&quot;private&quot;)
 </code></pre>
 
-<pre><code>## Your article has been created! Your id number is 1008994
+<pre><code>## Your article has been created! Your id number is 1109954
 </code></pre>
 
-<pre><code class="r">unlink(&quot;mtcars.csv&quot;)  # clean up
+<pre><code class="r">unlink(&quot;mtcars.csv&quot;) # clean up
 </code></pre>
 
 <h1>Examining Data on Figshare</h1>
@@ -454,13 +461,13 @@ id &lt;- fs_new_article(title = &quot;A Test of rfigshare&quot;, description = &
 <pre><code class="r">fs_details(id)
 </code></pre>
 
-<pre><code>## article_id: 1.009e+06
+<pre><code>## article_id: 1.11e+06
 ## title: A Test of rfigshare
 ## master_publisher_id: 0.0e+00
 ## defined_type: dataset
 ## status: Private
 ## version: 1.0
-## published_date: 08:51, Apr 28, 2014
+## published_date: 11:52, Jul 17, 2014
 ## description: This is a test
 ## description_nohtml: This is a test
 ## total_size: 1.70 KB
@@ -490,7 +497,7 @@ id &lt;- fs_new_article(title = &quot;A Test of rfigshare&quot;, description = &
 ## files:
 ## - size: 2 KB
 ##   thumb: ~
-##   id: 1.4766e+06
+##   id: 1.6002e+06
 ##   mime_type: text/plain
 ##   name: mtcars.csv
 ## links:
@@ -505,13 +512,13 @@ mine[1:2]
 </code></pre>
 
 <pre><code>## [[1]]
-## article_id: 1.009e+06
+## article_id: 1.11e+06
 ## title: A Test of rfigshare
 ## master_publisher_id: 0.0e+00
 ## defined_type: dataset
 ## status: Private
 ## version: 1.0
-## published_date: 08:51, Apr 28, 2014
+## published_date: 11:52, Jul 17, 2014
 ## description: This is a test
 ## description_nohtml: This is a test
 ## total_size: 1.70 KB
@@ -541,7 +548,7 @@ mine[1:2]
 ## files:
 ## - size: 2 KB
 ##   thumb: ~
-##   id: 1.4766e+06
+##   id: 1.6002e+06
 ##   mime_type: text/plain
 ##   name: mtcars.csv
 ## links:
@@ -549,13 +556,13 @@ mine[1:2]
 ##   id: 673.0
 ## 
 ## [[2]]
-## article_id: 1.009e+06
+## article_id: 1.11e+06
 ## title: Test title
 ## master_publisher_id: 0.0e+00
 ## defined_type: dataset
 ## status: Private
 ## version: 1.0
-## published_date: 08:51, Apr 28, 2014
+## published_date: 11:52, Jul 17, 2014
 ## description: description of test
 ## description_nohtml: description of test
 ## total_size: 1.70 KB
@@ -577,7 +584,7 @@ mine[1:2]
 ## files:
 ## - size: 2 KB
 ##   thumb: ~
-##   id: 1.4766e+06
+##   id: 1.6002e+06
 ##   mime_type: text/plain
 ##   name: mtcars.csv
 ## links: []
@@ -588,8 +595,8 @@ mine[1:2]
 <pre><code class="r">fs_ids(mine)
 </code></pre>
 
-<pre><code>##  [1] 1008994 1008993 1008991 1008990 1008987 1008985 1008984 1008982
-##  [9] 1008979 1008978
+<pre><code>##  [1] 1109954 1109953 1109951 1109949 1109948 1109945 1109944 1109941
+##  [9] 1109940 1109938
 </code></pre>
 
 <pre><code> [1] 105136 105135  97653  97500  97279  97218  96919  96916  95839    138
@@ -610,7 +617,7 @@ mine[1:2]
 ## 
 ##   Carl Boettiger, Scott Chamberlain, Karthik Ram and Edmund Hart
 ##   (2012). rfigshare: an R interface to figshare.com.. R package
-##   version 0.3-1. https://github.com/ropensci/rfigshare
+##   version 0.3.5. https://github.com/ropensci/rfigshare
 ## 
 ## A BibTeX entry for LaTeX users is
 ## 
@@ -618,7 +625,7 @@ mine[1:2]
 ##     title = {rfigshare: an R interface to figshare.com.},
 ##     author = {Carl Boettiger and Scott Chamberlain and Karthik Ram and Edmund Hart},
 ##     year = {2012},
-##     note = {R package version 0.3-1},
+##     note = {R package version 0.3.5},
 ##     url = {https://github.com/ropensci/rfigshare},
 ##   }
 </code></pre>

@@ -1,7 +1,38 @@
+v0.3.5
+-----------
+
+Minor bugfix
+
+* Skip uuid test if uuid is not available (e.g. on Solaris machines, thanks CRAN maintainers). 
+
+v0.3.4
+-----------
+
+Minor bugfix
+
+* Skip online tests if authentication fails 
+
+
+v0.3.3
+-----------
+
+Minor bugfix
+
+* tests use status codes instead of text parsing to determine API response errors. Makes tests more robust and compatible with latest `httr`, see [#84](https://github.com/ropensci/rfigshare/issues/84) 
+
+v0.3.2
+------
+
+Minor bugfix
+
+* include `httpuv` in imports (see [#82](https://github.com/ropensci/rfigshare/issues/82) and  [httr/110](https://github.com/hadley/httr/issues/110))
+
 v0.3.1
 ------
 
-* Minor bugfix -- API now returns author ids as integers instead of character strings, breaking test. Test now fixed. 
+Minor bugfix
+
+* API now returns author ids as integers instead of character strings, breaking test. Test now fixed. 
 
 
 v0.3
