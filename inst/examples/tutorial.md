@@ -1,23 +1,12 @@
-105131rfigshare
-==========
+---
+title: rfigshare - Share and explore figures, data, and publications on FigShare using R
 
-*An R interface to [FigShare](http://figshare.com)*
+---
 
-* Maintainer: Carl Boettiger, [cboettig](https://github.com/cboettig)
-* License: [CC0](http://creativecommons.org/publicdomain/zero/1.0/)
-* Contact: Report bugs, questions, or feature requests on the [Issues Tracker](https://github.com/ropensci/rfigshare/issues), or get in touch with us at [info@ropensci.org](mailto:info@ropensci.org)
-
-Installation
-------------
+![](http://farm9.staticflickr.com/8180/7950489358_ea902bdaae_o.png)
 
 
-```r
-require(devtools)
-install_github("rfigshare", "ropensci")
-```
 
-Getting Started
----------------
 
 
 

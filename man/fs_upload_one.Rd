@@ -1,15 +1,13 @@
-\name{fs_upload}
-\alias{fs_upload}
+\name{fs_upload_one}
+\alias{fs_upload_one}
 \title{Upload file to an article}
 \usage{
-  fs_upload(article_id, file, session = fs_get_auth())
+  fs_upload_one(article_id, file, session = fs_get_auth())
 }
 \arguments{
-  \item{article_id}{an article id number or a character
-  string (or list) of numbers}
+  \item{article_id}{number}
 
-  \item{file}{path to file to upload, or character string
-  (or list) of files (paths)}
+  \item{file}{path to file to upload}
 
   \item{session}{the authentication credentials from
   \code{\link{fs_auth}} (optional)}
@@ -38,4 +36,5 @@ fs_upload(id, "file.png")
 \seealso{
   \code{\link{fs_auth}}
 }
+\keyword{internal}
 
