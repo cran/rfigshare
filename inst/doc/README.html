@@ -229,16 +229,7 @@ install_github(&quot;rfigshare&quot;, &quot;ropensci&quot;)
 <pre><code class="r">fs_author_search(&quot;Boettiger&quot;)
 </code></pre>
 
-<pre><code>## [[1]]
-## id: &#39;96387&#39;
-## fname: Carl
-## lname: Boettiger
-## full_name: Carl Boettiger
-## job_title: &#39;&#39;
-## description: &#39;&#39;
-## facebook: &#39;&#39;
-## twitter: &#39;&#39;
-## active: 1.0
+<pre><code>## list()
 </code></pre>
 
 <p>Try creating your own content:</p>
@@ -246,7 +237,7 @@ install_github(&quot;rfigshare&quot;, &quot;ropensci&quot;)
 <pre><code class="r">id &lt;- fs_create(&quot;Test title&quot;, &quot;description of test&quot;)
 </code></pre>
 
-<pre><code>## Your article has been created! Your id number is 971367
+<pre><code>## Your article has been created! Your id number is 1008993
 </code></pre>
 
 <p>This creates an article with the essential metadata information. We can now upload the dataset to this newly created figshare object using <code>fs_upload</code>.  For the purposes of this example, we&#39;ll just upload one of R&#39;s built-in datasets:</p>
@@ -430,7 +421,7 @@ fs_upload(id, &quot;mtcars.csv&quot;)
 <pre><code class="r">fs_make_private(id)
 </code></pre>
 
-<pre><code>## Response [http://api.figshare.com/v1/my_data/articles/971367/action/make_private]
+<pre><code>## Response [http://api.figshare.com/v1/my_data/articles/1008993/action/make_private]
 ##   Status: 200
 ##   Content-type: application/json; charset=UTF-8
 ## {&quot;success&quot;: &quot;Article status changed to Private&quot;}
@@ -450,7 +441,7 @@ id &lt;- fs_new_article(title = &quot;A Test of rfigshare&quot;, description = &
     files = &quot;mtcars.csv&quot;, visibility = &quot;private&quot;)
 </code></pre>
 
-<pre><code>## Your article has been created! Your id number is 971368
+<pre><code>## Your article has been created! Your id number is 1008994
 </code></pre>
 
 <pre><code class="r">unlink(&quot;mtcars.csv&quot;)  # clean up
@@ -463,13 +454,13 @@ id &lt;- fs_new_article(title = &quot;A Test of rfigshare&quot;, description = &
 <pre><code class="r">fs_details(id)
 </code></pre>
 
-<pre><code>## article_id: 9.7137e+05
+<pre><code>## article_id: 1.009e+06
 ## title: A Test of rfigshare
 ## master_publisher_id: 0.0e+00
 ## defined_type: dataset
 ## status: Private
 ## version: 1.0
-## published_date: 06:25, Mar 23, 2014
+## published_date: 08:51, Apr 28, 2014
 ## description: This is a test
 ## description_nohtml: This is a test
 ## total_size: 1.70 KB
@@ -499,7 +490,7 @@ id &lt;- fs_new_article(title = &quot;A Test of rfigshare&quot;, description = &
 ## files:
 ## - size: 2 KB
 ##   thumb: ~
-##   id: 1.4318e+06
+##   id: 1.4766e+06
 ##   mime_type: text/plain
 ##   name: mtcars.csv
 ## links:
@@ -514,13 +505,13 @@ mine[1:2]
 </code></pre>
 
 <pre><code>## [[1]]
-## article_id: 9.7137e+05
+## article_id: 1.009e+06
 ## title: A Test of rfigshare
 ## master_publisher_id: 0.0e+00
 ## defined_type: dataset
 ## status: Private
 ## version: 1.0
-## published_date: 06:25, Mar 23, 2014
+## published_date: 08:51, Apr 28, 2014
 ## description: This is a test
 ## description_nohtml: This is a test
 ## total_size: 1.70 KB
@@ -550,7 +541,7 @@ mine[1:2]
 ## files:
 ## - size: 2 KB
 ##   thumb: ~
-##   id: 1.4318e+06
+##   id: 1.4766e+06
 ##   mime_type: text/plain
 ##   name: mtcars.csv
 ## links:
@@ -558,13 +549,13 @@ mine[1:2]
 ##   id: 673.0
 ## 
 ## [[2]]
-## article_id: 9.7137e+05
+## article_id: 1.009e+06
 ## title: Test title
 ## master_publisher_id: 0.0e+00
 ## defined_type: dataset
 ## status: Private
 ## version: 1.0
-## published_date: 06:25, Mar 23, 2014
+## published_date: 08:51, Apr 28, 2014
 ## description: description of test
 ## description_nohtml: description of test
 ## total_size: 1.70 KB
@@ -586,7 +577,7 @@ mine[1:2]
 ## files:
 ## - size: 2 KB
 ##   thumb: ~
-##   id: 1.4318e+06
+##   id: 1.4766e+06
 ##   mime_type: text/plain
 ##   name: mtcars.csv
 ## links: []
@@ -597,7 +588,8 @@ mine[1:2]
 <pre><code class="r">fs_ids(mine)
 </code></pre>
 
-<pre><code>##  [1] 971368 971367 971364 971362 971361 971358 971357 971354 971351 971350
+<pre><code>##  [1] 1008994 1008993 1008991 1008990 1008987 1008985 1008984 1008982
+##  [9] 1008979 1008978
 </code></pre>
 
 <pre><code> [1] 105136 105135  97653  97500  97279  97218  96919  96916  95839    138
@@ -618,7 +610,7 @@ mine[1:2]
 ## 
 ##   Carl Boettiger, Scott Chamberlain, Karthik Ram and Edmund Hart
 ##   (2012). rfigshare: an R interface to figshare.com.. R package
-##   version 0.3-0. https://github.com/ropensci/rfigshare
+##   version 0.3-1. https://github.com/ropensci/rfigshare
 ## 
 ## A BibTeX entry for LaTeX users is
 ## 
@@ -626,7 +618,7 @@ mine[1:2]
 ##     title = {rfigshare: an R interface to figshare.com.},
 ##     author = {Carl Boettiger and Scott Chamberlain and Karthik Ram and Edmund Hart},
 ##     year = {2012},
-##     note = {R package version 0.3-0},
+##     note = {R package version 0.3-1},
 ##     url = {https://github.com/ropensci/rfigshare},
 ##   }
 </code></pre>
