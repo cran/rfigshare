@@ -2,14 +2,13 @@
 \alias{fs_browse}
 \title{Browse articles}
 \usage{
-  fs_browse(mine = FALSE, public_only = FALSE,
-    private_only = FALSE, drafts_only = FALSE,
-    session = fs_get_auth(),
-    base = "http://api.figshare.com/v1", query = NA)
+fs_browse(mine = TRUE, public_only = FALSE, private_only = FALSE,
+  drafts_only = FALSE, session = fs_get_auth(),
+  base = "http://api.figshare.com/v1", query = NA, debug = FALSE)
 }
 \arguments{
   \item{mine}{Logical, show only my (authenticated user's)
-  articles. Defaults to FALSE, browse all public articles.}
+  articles. Defaults to TRUE.}
 
   \item{public_only}{(for use with mine=TRUE only) browse
   only my public articles. default is FALSE}
@@ -27,34 +26,31 @@
 
   \item{base}{the API access url}
 
-  \item{query}{a search query tern (equivalent to calling
+  \item{query}{a search query term (equivalent to calling
   fs_search)}
+
+  \item{debug}{enable debugging mode}
 }
 \value{
-  output of PUT request (invisibly)
+output of PUT request (invisibly)
 }
 \description{
-  Browse can be set to all public articles, the users own
-  articles, Browse can filter on matching timestamp,
-  author, title, description, tag, category, and date
-  range.
-}
-\details{
-  NOTE: CURRENTLY FILTERING IN BROWSE MODE IS NOT SUPPORTED
-  BY THE API, other than mine, public, private, drafts_only
+Browse can be set to all public articles, the users own
+articles, Browse can filter on matching timestamp, author,
+title, description, tag, category, and date range.
 }
 \examples{
 \dontrun{
-fs_browse(mine=TRUE)
+fs_browse()
 }
 }
 \author{
-  Carl Boettiger \email{cboettig@gmail.com}
+Carl Boettiger \email{cboettig@gmail.com}
 }
 \references{
-  \url{http://api.figshare.com/docs/howto.html#q-search}
+\url{http://api.figshare.com/docs/howto.html#q-search}
 }
 \seealso{
-  \code{\link{fs_auth}}
+\code{\link{fs_auth}}
 }
 

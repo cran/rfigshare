@@ -19,14 +19,15 @@
 #' @import RJSONIO
 #' @export
 #' @examples \dontrun{
-#'id <- fs_new_article(title="A Test of rfigshare", 
+#' write.csv(mtcars, "mtcars.csv")
+#' id <- fs_new_article(title="A Test of rfigshare", 
 #'                     description="This is a test of the fs_new_article function and related methods", 
-#'                     type="figure", 
+#'                     type="dataset", 
 #'                     authors=c("Karthik Ram", "Scott Chamberlain"), 
 #'                     tags=c("ecology", "openscience"), 
 #'                     categories="Ecology", 
 #'                     links="http://ropensci.org", 
-#'                     files="figure/rfigshare.png",
+#'                     files="mtcars.csv",
 #'                     visibility="private")
 #' }
 
@@ -37,26 +38,29 @@ fs_new_article <- function(title, description, type =
          visibility = c("draft", "private", "public"),
          session = fs_get_auth()){
 
-  article_id <- fs_create(title=title, description=description, 
-              type=type, session=session)
+  article_id <- fs_create(title = title, 
+                          description = description, 
+                          type = type, 
+                          session = session)
   visibility <- match.arg(visibility)
-  if(!is.na(authors))
+  if(!is.nas(authors))
     fs_add_authors(article_id, authors, session)
-  if(!is.na(categories))
+  if(!is.nas(categories))
     fs_add_categories(article_id, categories, session)
-  if(!is.na(tags))
+  if(!is.nas(tags))
     fs_add_tags(article_id, tags, session)
-  if(!is.na(links))
+  if(!is.nas(links))
     fs_add_links(article_id, links, session)
-  if(!is.na(files))
+  if(!is.nas(files))
     fs_upload(article_id, files, session)
   if(visibility == "private")
     fs_make_private(article_id, session)
   if(visibility == "public")
     fs_make_public(article_id, session)
 
+#   fs_tag_as_rfigshare(article_id) # performed by fs_upload
   article_id
 }
 
-
+is.nas <- function(x) any(sapply(x, is.na))
 

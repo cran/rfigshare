@@ -22,8 +22,8 @@
 #' fs_download(ids, urls_only=FALSE)
 #' }
 fs_download <- 
-  function(article_id, urls_only = TRUE, mine=FALSE, session = fs_get_auth(),
-         show_versions=FALSE, version=NULL, ...){
+  function(article_id, urls_only = TRUE, mine=is_mine(article_id), session = fs_get_auth(),
+         show_versions=FALSE, version=NULL, ...) {
     details <- lapply(article_id, fs_details, mine = mine, session = session,
            show_versions = show_versions, version = NULL)
 
@@ -33,7 +33,9 @@ fs_download <-
       unlist(lapply(output$files, function(f) f$download_url))))
 
     if(!urls_only)
-      sapply(1:length(urls), function(i) download.file(urls[i], destfile=filenames[i], ..., method = "internal"))
+      sapply(1:length(urls), function(i) 
+             download.file(urls[i], destfile=filenames[i], 
+                           ..., method = "internal"))
     urls
   }
 

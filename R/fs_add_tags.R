@@ -14,20 +14,23 @@
 #'  fs_add_tag(138, "phylogenetics") 
 #' }
 fs_add_tags <- 
-  function(article_id, tag, session = fs_get_auth()){
+  function(article_id, tag, session = fs_get_auth(), debug = FALSE){
     if(is.list(tag)){
       tag <- unlist(tag)
     }
     base <- "http://api.figshare.com/v1"
-    method <- paste("my_data/articles", article_id, "tags", sep= "/")
+    method <- paste("my_data/articles", article_id, "tags", sep = "/")
     request <- paste(base, method, sep="/")
     for(i in 1:length(tag)){
       body <- toJSON(list("tag_name" = tag[i]))
-      config <- c(verbose(), session, 
+      config <- c(config(token = session), 
                   add_headers("Content-Type" = "application/json"))
       
-      post <- PUT(request, config=config, body=body)
+      post <- PUT(request, config = config, body = body)
+      if(debug | post$status_code != 200)
+        post
+      else
       invisible(post)
-      
     }
+  #  fs_tag_as_rfigshare(article_id)
   }

@@ -1,3 +1,39 @@
+
+v0.3
+----
+
+Major improvements to authentication.  First-time authentication no longer includes the tedious process
+of getting and storing keys and tokens. This is all handled automatically thanks to improvements in
+httr 0.3.  The use of explicitly passing tokens is still supported and used fo the internal/automated
+testing of the package.  
+
+* More explicit error handling ([#75](https://github.com/ropensci/rfigshare/issues/75))
+* Handle the `mine` argument for `fs_details` automatically ([#76](https://github.com/ropensci/rfigshare/issues/76))
+* Fixes fs_search ([#64](https://github.com/ropensci/rfigshare/issues/64)) and thus fs_ids, [#66](https://github.com/ropensci/rfigshare/issues/66).
+* Fixes fs_browse (though API still limits to 10 results, [#77](https://github.com/ropensci/rfigshare/issues/77)).
+* Fixes fs_create_authors ([#78](https://github.com/ropensci/rfigshare/issues/78)).
+
+v0.2-9
+-----
+* Greatly streamlined authentication to avoid having to provide tokens. ([#72](https://github.com/ropensci/rfigshare/issues/72))
+* Updated unit tests, and now run as part of check [#67](https://github.com/ropensci/rfigshare/pull/67)
+* Consistent with latest changes to httr ([#70](https://github.com/ropensci/rfigshare/issues/70))
+* Includes travis continuous testing integration ([#69](https://github.com/ropensci/rfigshare/issues/69))
+* Displays a yaml-based summary from `fs_details`
+
+
+v0.2-8
+-----
+* Minor bugfix: avoids the `text_content` warning ([#59](https://github.com/ropensci/rfigshare/pull/59))
+* Improved documentation and added ggplot2 to Imports list
+
+
+
+v0.2-7
+-----
+* Bugfix following changes to API in `fs_update`
+
+
 v0.2-6
 ------
 * Resubmit to CRAN (vignettes not ready for 3.0.0 apparently)

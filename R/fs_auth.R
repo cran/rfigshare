@@ -1,39 +1,72 @@
 
-#' Figshare authentication via httr
+#' Figshare authentication via OAuth1.0 using httr
 #'
-#' User specific API methods require obtaining access keys from Figshare.com. To do so, first sign up at the Figshare \href{http://api.figshare.com/docs}{developer site} and obtain Figshare API keys. Ideally you should store these keys in your \code{.rprofile} like so:
+#' Figshare authentication via OAuth1.0 using httr
+#' @param cKey optional argument for the consumer key.  See details.  
+#' @param cSecret optional argument for the consumer secret key. See details. 
+#' @param token optional argument for the user-specific token.  See details.  
+#' @param token_secret Optional argument to provide a secret token assigned
+#' to the user, rather than let fs_auth() automatically handle authentication. 
+#' See details.  
+#' @details Explicit calls to fs_auth() are usually not needed,
+#' as the function is called automatically by all other functions that
+#' need authentication.  As of version 0.3, no arguments are needed as
+#' authentication is done online, and fs_auth() will not attempt to load
+#' keys stored in options.  
+#' 
+#' By default, the function will use the application's consumer key and
+#' consumer secret key, rather than expecting the user to create their own
+#' application.  The user-specific tokens will then be generated and locally
+#' cached for use between sessions, if indicated by the interactive options. 
+#' For details, see httr oauth1.0_token documentation.  
 #'
-#' \code{options(FigsharePrivateKey="Your_Key")}
-#' \code{options(FigsharePrivateToken="Your_secret_key")}
-#' \code{options(FigshareSecret="Your_secret_key")}
-#' \code{options(FigshareToken="Your_secret_key")}
-#'
-#' If this is not possible (assuming you are on a public machine), then you can specify both inline. Calling \code{fs_auth()} with the right keys will launch your default browser and take you to Figshare.com to authorize this application. If you are not logged in, you will first be prompted to login with your Figshare user/pass. Next, click accept to see a pin. At that point, copy the pin and paste it back at the R prompt. If you assign this to a R object, then you can use that as the first argument in all functions that require authentication.
-#' If you have successfully completed this step, you should ideally save the \code{Oauth credential object} to disk for future use. There is no need to repeat this step each time.
-#' @param cKey Consumer key. can be supplied here or read from Options()
-#' @param  cSecret Consumer secret. can be supplied here or read from Options()
-#' @param token the Figshare token. can be supplied here or read from Options()
-#' @param token_secret the Figshare secret token. can be supplied here or read from Options()
-#' API key creditentials can be set in .Rprofile using options("FigshareKey" = "XXXXXX-XXXX")
+#' If for some reason a user would rather provide there token and secret token
+#' as before this is still supported using the same arguments.  Users wanting to
+#' have their own app can provide cKey and cSecret arguments too, but this
+#' is provided primarily for backwards compatibility with older versions.  It
+#' is expected that most users will leave the keys as NULL.  
 #' @return OAuth credential (invisibly).  The credential is also written to the enivornment "FigshareAuthCache", which is created when the package is loaded.  All functions needing authentication can then access the credential without it being explicitly passed in the function call.  
-#' @import httr 
+#' @import httr
 #' @export
 #' @author Carl Boettiger \email{cboettig@@gmail.com}
 #' @references \url{http://api.figshare.com}
 #' @examples \dontrun{
 #' fs_auth()
 #' }
-
 fs_auth <- 
-function(cKey = getOption("FigshareKey", stop("Missing Figshare consumer key")),
-       cSecret = getOption("FigsharePrivateKey", stop("Missing Figshare app secret")),
-       token = getOption("FigshareToken", stop("Missing Figshare token")),
-       token_secret = getOption("FigsharePrivateToken", stop("Missing Figshare Secret Token"))){
-  myapp <- oauth_app("rfigshare", key = cKey, secret=cSecret)
-  oauth <-  httr:::sign_oauth1.0(myapp, token = token, token_secret = token_secret)
+function(cKey = NULL, cSecret = NULL, token = NULL, token_secret = NULL){
+
+  if(is.null(cKey))
+    cKey <- "Kazwg91wCdBB9ggypFVVJg"
+  if(is.null(cSecret))
+    cSecret <- "izgO06p1ymfgZTsdsZQbcA"
+
+  endpoint <- 
+    oauth_endpoint("request_token", 
+                   "authorize", 
+                   "access_token", 
+                   base_url = "http://api.figshare.com/v1/pbl/oauth")
+  myapp <- oauth_app("rfigshare", 
+                     key = cKey, 
+                     secret = cSecret)
+
+  if(is.null(token) && is.null(token_secret))
+    oauth <- oauth1.0_token(endpoint, myapp)
+  else
+    oauth <- sign_oauth1.0(myapp, token = token, token_secret = token_secret)$token
+
+
   assign('oauth', oauth, envir=FigshareAuthCache)
+
+  # Test that we have authenticated
+  if(GET("http://api.figshare.com/v1/my_data/articles", 
+         config(token = oauth)
+         )$status_code != 200){
+    stop("Authentication failed, please check your credentials")
+  } else {
+    message("Authentication successful")
+  }
   invisible(oauth)
 } 
-
 
 

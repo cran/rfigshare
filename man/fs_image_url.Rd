@@ -2,18 +2,20 @@
 \alias{fs_image_url}
 \title{get image url}
 \usage{
-  fs_image_url(id)
+fs_image_url(id, debug = FALSE)
 }
 \arguments{
-  \item{id}{a figshare article id number}
+  \item{id}{a (public) figshare figure id number}
+
+  \item{debug}{logical, enable debugging mode?}
 }
 \value{
-  a url to the image file
+a url to the image file
 }
 \description{
-  get image url
+get image url
 }
 \details{
-  this is currently an unstable hack of html parsing
+this is currently an unstable hack of html parsing
 }
 

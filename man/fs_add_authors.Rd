@@ -2,8 +2,8 @@
 \alias{fs_add_authors}
 \title{Add author to an article}
 \usage{
-  fs_add_authors(article_id, authors,
-    session = fs_get_auth(), create_missing = FALSE)
+fs_add_authors(article_id, authors, session = fs_get_auth(),
+  create_missing = TRUE, debug = FALSE)
 }
 \arguments{
   \item{article_id}{id number of an article on figshare}
@@ -17,15 +17,15 @@
   run.}
 
   \item{create_missing}{(logical) Attempt to create authors
-  not already registered on FigShare? (default is False and
-  such authors will not be added). Not currently supported
-  by the API(?)}
+  not already registered on FigShare?}
+
+  \item{debug}{return the httr result visibly?}
 }
 \value{
-  adds the requested authors to the given article
+adds the requested authors to the given article
 }
 \description{
-  Add author to an article
+Add author to an article
 }
 \examples{
 \dontrun{
@@ -37,6 +37,6 @@
 }
 }
 \author{
-  Carl Boettiger \email{cboettig@gmail.com}
+Carl Boettiger \email{cboettig@gmail.com}
 }
 

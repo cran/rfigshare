@@ -2,8 +2,8 @@
 \alias{fs_add_categories}
 \title{Add a category to article}
 \usage{
-  fs_add_categories(article_id, category_id,
-    session = fs_get_auth())
+fs_add_categories(article_id, category_id, session = fs_get_auth(),
+  debug = FALSE)
 }
 \arguments{
   \item{article_id}{the id number of the article}
@@ -15,12 +15,14 @@
   from \code{\link{fs_auth}}. If not provided, will attempt
   to load from cache as long as figshare_auth has been
   run.}
+
+  \item{debug}{return PUT results visibly?}
 }
 \value{
-  output of PUT request (invisibly)
+output of PUT request (invisibly)
 }
 \description{
-  Add a category to article
+Add a category to article
 }
 \examples{
 \dontrun{
@@ -28,12 +30,12 @@ fs_add_categories(138, "Ecology")
 }
 }
 \author{
-  Edmund Hart \email{edmund.m.hart@gmail.com}
+Edmund Hart \email{edmund.m.hart@gmail.com}
 }
 \references{
-  \url{http://api.figshare.com}
+\url{http://api.figshare.com}
 }
 \seealso{
-  \code{\link{fs_auth}}
+\code{\link{fs_auth}}
 }
 
