@@ -516,4 +516,4 @@ citation("rfigshare")
 ```
 
 
-[![ropensci.org logo](http://ropensci.org/public_images/github_footer.png)](http://ropensci.org)\
+[![ropensci footer](http://ropensci.org/public_images/github_footer.png)](http://ropensci.org)
