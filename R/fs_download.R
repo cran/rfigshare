@@ -1,7 +1,8 @@
-
 #' Get details for an article
 #'
 #' @author Carl Boettiger \email{cboettig@@gmail.com}
+#' @importFrom utils download.file
+#' @importFrom utils select.list
 #' @param article_id number
 #' @param urls_only logical (default TRUE) to only return the URLs to the 
 #' downloadable objects but do not call download.file.  If FALSE, will download files
@@ -35,7 +36,7 @@ fs_download <-
     if(!urls_only)
       sapply(1:length(urls), function(i) 
              download.file(urls[i], destfile=filenames[i], 
-                           ..., method = "internal"))
+                           ...))
     urls
   }
 

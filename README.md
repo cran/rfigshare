@@ -1,8 +1,8 @@
----
-title: rfigshare tutorial
-author: Carl Boettiger
----
 
+
+
+# rfigshare is deprecated 
+## Please consider using [deposits](https://github.com/ropenscilabs/deposits) instead
 
 <!--
 %\VignetteEngine{knitr::knitr}
@@ -12,16 +12,11 @@ author: Carl Boettiger
 [![Build Status](https://api.travis-ci.org/ropensci/rfigshare.png)](https://travis-ci.org/ropensci/rfigshare)
 
 
-
-
-rfigshare
-==========
-
-*An R interface to [FigShare](http://figshare.com)*
+*An R interface to [FigShare](https://figshare.com/)*
 
 * Maintainer: Carl Boettiger, [cboettig](https://github.com/cboettig)
-* License: [CC0](http://creativecommons.org/publicdomain/zero/1.0/)
-* Contact: Report bugs, questions, or feature requests on the [Issues Tracker](https://github.com/ropensci/rfigshare/issues), or get in touch with us at [info@ropensci.org](mailto:info@ropensci.org)
+* License: [CC0](https://creativecommons.org/publicdomain/zero/1.0/)
+* Contact: Report bugs, questions, or feature requests on the [Issues Tracker](https://github.com/ropensci-archive/rfigshare/issues), or get in touch with us at [info@ropensci.org](mailto:info@ropensci.org)
 
 Installation
 ------------
@@ -307,7 +302,7 @@ id <- fs_new_article(title="A Test of rfigshare",
                      authors=c("Karthik Ram", "Scott Chamberlain"), 
                      tags=c("ecology", "openscience"), 
                      categories="Ecology", 
-                     links="http://ropensci.org", 
+                     links="https://ropensci.org/", 
                      files="mtcars.csv",
                      visibility="private")
 ```
@@ -372,7 +367,7 @@ fs_details(id)
 ##   mime_type: text/plain
 ##   name: mtcars.csv
 ## links:
-## - link: http://ropensci.org
+## - link: https://ropensci.org/
 ##   id: 673.0
 ```
 
@@ -427,7 +422,7 @@ mine[1:2]
 ##   mime_type: text/plain
 ##   name: mtcars.csv
 ## links:
-## - link: http://ropensci.org
+## - link: https://ropensci.org/
 ##   id: 673.0
 ## 
 ## [[2]]
@@ -516,4 +511,4 @@ citation("rfigshare")
 ```
 
 
-[![ropensci footer](http://ropensci.org/public_images/github_footer.png)](http://ropensci.org)
+[![ropensci footer](https://ropensci.org//public_images/github_footer.png)](https://ropensci.org/)
